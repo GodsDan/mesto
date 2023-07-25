@@ -1,0 +1,7 @@
+.header__logo {
+    display: block;
+    object-fit: cover;
+    width: 142px;
+    height: 33px;
+    padding-bottom: 41px;
+}

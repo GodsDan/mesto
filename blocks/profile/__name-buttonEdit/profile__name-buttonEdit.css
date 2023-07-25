@@ -1,0 +1,5 @@
+.profile__name-buttonEdit {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
