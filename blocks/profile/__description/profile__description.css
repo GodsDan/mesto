@@ -1,6 +1,7 @@
 .profile__description {
     margin: 0 0 22px;
     padding: 0;
+    max-width: 336px;
     color: #FFF;
     font-size: 18px;
     font-style: normal;

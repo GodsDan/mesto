@@ -1,0 +1,17 @@
+.form__data {
+    width: 100%;
+    border: none;
+    outline:none;
+    padding: 0;
+    border-bottom: 1px solid #cccccc;
+    height: 40px;
+    color: #000;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    box-sizing: border-box;
+}
+
+
