@@ -3,3 +3,10 @@
     flex-direction: row;
     gap: 18px;
 }
+
+@media screen and (max-width: 856px) {
+    .profile__name-buttonEdit {
+        gap: 10px;
+        margin-left: 27px;
+    }
+}

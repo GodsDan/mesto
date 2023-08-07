@@ -12,3 +12,12 @@
     overflow: hidden;
     text-rendering: optimizeLegibility;
 }
+
+@media screen and (max-width: 856px) {
+    .profile__description {
+        font-size: 14px;
+        max-width: 282px;
+        margin-bottom: 36px;
+        text-align: center;
+    }
+}

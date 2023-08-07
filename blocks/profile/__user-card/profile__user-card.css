@@ -3,3 +3,9 @@
     flex-direction: row;
     align-items: center;
 }
+
+@media screen and (max-width: 856px) {
+    .profile__user-card {
+        flex-direction: column;
+    }
+}
