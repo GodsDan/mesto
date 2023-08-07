@@ -1,11 +1,11 @@
 .header {
     max-width: calc(100% - 400px);
     margin: 0 auto;
-    padding-top: 45px; 
+    padding-top: 45px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
-@media screen and (max-width: 1200px ) {
+@media screen and (max-width: 1200px) {
     .header {
         max-width: calc(100% - 200px);
     }
