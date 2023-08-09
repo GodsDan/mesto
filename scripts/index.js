@@ -9,7 +9,7 @@ let profileDescription = document.querySelector('.profile__description');
 let formElement = document.querySelector('.form');
 
 // Находим поля формы в DOM
-let nameInput = formElement.querySelector('.form__data__input_name');
+let nameInput = formElement.querySelector('.form__data_input_name');
 let jobInput = formElement.querySelector('.form__data_input_description');
 
 profileButtonEdit.addEventListener('click',()=>{
