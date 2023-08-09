@@ -1,21 +1,18 @@
-.element__like-label:hover {
+.element__like {
+    background-image: url("../../../images/like.svg");
+    border: none;
+    background-color: transparent;
+    width: 22px;
+    height: 19px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity .2s;
+}
+
+.element__like:hover {
     opacity: .5;
 }
 
-.element__like-input ~ label {
-    background-image: url("../../../images/like.svg");
-    width: 22px;
-    height: 19px;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity .2s;
-}
-
-.element__like-input:checked ~ label {
+.element__like:active {
     background-image: url("../../../images/like-black.svg");
-    width: 22px;
-    height: 19px;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity .2s;
 }

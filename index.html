@@ -17,66 +17,59 @@
             <div class="profile__user-card">
                 <img src="./images/profile-avatar.jpg" alt="Фото профиля" class="profile__avatar">
                 <div class="profile__info">
-                    <div class="profile__name-buttonEdit">
+                    <div class="profile__name-button-edit">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button type="button" class="profile__button-edit">
+                        <button type="button" class="profile__button-edit" aria-label="Редактировать профиль">
                             <img src="./images/profile-edit_button.svg" alt="Кнопка изменения данных профиля">
                         </button>
                     </div>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
             </div>
-            <button type="button" class="profile__button-add">
-                <img src="./images/profile-add_button.svg" alt="Кнопка добавления новой записи">
+            <button type="button" class="profile__button-add" aria-label="Добавление новой записи">
             </button>
         </section>
         <section class="elements">
             <div class="element">
                 <img class="element__image" src="./images/card-perm.jpg" alt="Пермь">
                 <div class="element__rectangle">
-                    <h2 class="element__mesto">Пермь</h2>
-                    <input class="element__like-input" type="checkbox" id="checkbox-case1">
-                    <label class="element__like-label" for="checkbox-case1"></label>
+                    <h2 class="element__title">Пермь</h2>
+                    <button class="element__like" type="button" aria-label="Лайк"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/card-moskva.jpg" alt="Москва">
                 <div class="element__rectangle">
-                    <h2 class="element__mesto">Москва</h2>
-                    <input class="element__like-input" type="checkbox" id="checkbox-case2">
-                    <label class="element__like-label" for="checkbox-case2"></label>
+                    <h2 class="element__title">Москва</h2>
+                    <button class="element__like" type="button" aria-label="Лайк"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/card-noviy.jpg" alt="Новый свет">
                 <div class="element__rectangle">
-                    <h2 class="element__mesto">Новый свет</h2>
-                    <input class="element__like-input" type="checkbox" id="checkbox-case3">
-                    <label class="element__like-label" for="checkbox-case3"></label>
+                    <h2 class="element__title">Новый свет</h2>
+                    <button class="element__like" type="button" aria-label="Лайк"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/card-vladivostok.jpg" alt="Братск">
                 <div class="element__rectangle">
-                    <h2 class="element__mesto">Братск</h2>
-                    <input class="element__like-input" type="checkbox" id="checkbox-case4">
-                    <label class="element__like-label" for="checkbox-case4"></label>
+                    <h2 class="element__title">Братск</h2>
+                    <button class="element__like" type="button" aria-label="Лайк"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/card-krasnodar.jpg" alt="Краснодар">
                 <div class="element__rectangle">
-                    <h2 class="element__mesto">Краснодар</h2>
-                    <input class="element__like-input" type="checkbox" id="checkbox-case5">
-                    <label class="element__like-label" for="checkbox-case5"></label>
+                    <h2 class="element__title">Краснодар</h2>
+                    <button class="element__like" type="button" aria-label="Лайк"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/card-baikal.jpg" alt="Байкал">
                 <div class="element__rectangle">
-                    <h2 class="element__mesto">Байкал</h2>
-                    <input class="element__like-input" type="checkbox" id="checkbox-case6">
-                    <label class="element__like-label" for="checkbox-case6"></label>
+                    <h2 class="element__title">Байкал</h2>
+                    <button class="element__like" type="button" aria-label="Лайк"></button>
                 </div>
             </div>
         </section>
@@ -84,7 +77,7 @@
     <footer class="footer">
         <p class="footer__copyright">© 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_opened">
         <div class="popup__background"></div>
         <div class="popup__container">
             <button class="popup__close-button" type="button">
@@ -92,7 +85,7 @@
                     class="popup__close-button-image">
             </button>
             <h2 class="popup__caption">Редактировать профиль</h2>
-            <form class="form" method="post" name="popup-form">
+            <form class="form" method="post" name="form-edit-profile">
                 <input type="text" name="avatar-name" class="form__data form__data_name" required placeholder="Имя">
                 <input type="text" name="avatar-desription" class="form__data form__data_description" required
                     placeholder="О себе">
@@ -100,7 +93,7 @@
             </form>
         </div>
     </div>
+    <script src="./scripts/index.js"></script>
 </body>
-<script src="./scripts/index.js"></script>
 
 </html>

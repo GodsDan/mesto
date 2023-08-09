@@ -1,11 +1,11 @@
-.profile__name-buttonEdit {
+.profile__name-button-edit {
     display: flex;
     flex-direction: row;
     gap: 18px;
 }
 
 @media screen and (max-width: 856px) {
-    .profile__name-buttonEdit {
+    .profile__name-button-edit {
         gap: 10px;
         margin-left: 27px;
     }
