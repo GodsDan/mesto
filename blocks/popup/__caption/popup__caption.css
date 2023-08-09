@@ -1,19 +1,20 @@
 .popup__caption {
-    margin: 0;
-    padding: 0;
-    height: 24px;
+    max-width: 330px;
+    margin-top: 34px;
+    margin-bottom: 41px;
+    margin-left: 36px;
+    font-family: "Inter", "Helvetica Neue", sans-serif;
     color: #000;
     font-size: 24px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    max-width: 330px;
 }
 
 @media screen and (max-width: 550px) {
     .popup__caption {
+        margin: 25px 0 62px 22px;
         max-width: 238px;
-        height: 22px;
         font-size: 18px;
     }
 }

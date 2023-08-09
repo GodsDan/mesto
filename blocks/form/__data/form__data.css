@@ -1,17 +1,20 @@
 .form__data {
     width: 100%;
     border: none;
-    outline:none;
+    outline: none;
     padding: 0;
     border-bottom: 1px solid #cccccc;
     height: 40px;
+    margin-bottom: 17px;
+    box-sizing: border-box;
     color: #000;
-    font-family: Inter;
+    font-family: "Inter", "Helvetica Neue", sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    box-sizing: border-box;
 }
 
-
+.form__data:last-of-type {
+    margin-bottom: 48px;
+}
