@@ -2,9 +2,8 @@
     background-color: #fff;
     display: flex;
     flex-direction: row;
-    padding: 0 15px 0 21px;
+    padding: 25px 15px 31px 21px;
     justify-content: space-between;
     align-items: center;
     border-radius: 0 0 10px 10px;
-    min-height: 80px;
 }
