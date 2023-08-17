@@ -29,55 +29,12 @@
             <button type="button" class="profile__button-add" aria-label="Добавление новой записи">
             </button>
         </section>
-        <section class="elements">
-            <div class="element">
-                <img class="element__image" src="./images/card-perm.jpg" alt="Пермь">
-                <div class="element__rectangle">
-                    <h2 class="element__title">Пермь</h2>
-                    <button class="element__like" type="button" aria-label="Лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/card-moskva.jpg" alt="Москва">
-                <div class="element__rectangle">
-                    <h2 class="element__title">Москва</h2>
-                    <button class="element__like" type="button" aria-label="Лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/card-noviy.jpg" alt="Новый свет">
-                <div class="element__rectangle">
-                    <h2 class="element__title">Новый свет</h2>
-                    <button class="element__like" type="button" aria-label="Лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/card-vladivostok.jpg" alt="Братск">
-                <div class="element__rectangle">
-                    <h2 class="element__title">Братск</h2>
-                    <button class="element__like" type="button" aria-label="Лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/card-krasnodar.jpg" alt="Краснодар">
-                <div class="element__rectangle">
-                    <h2 class="element__title">Краснодар</h2>
-                    <button class="element__like" type="button" aria-label="Лайк"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="./images/card-baikal.jpg" alt="Байкал">
-                <div class="element__rectangle">
-                    <h2 class="element__title">Байкал</h2>
-                    <button class="element__like" type="button" aria-label="Лайк"></button>
-                </div>
-            </div>
-        </section>
+        <section class="elements"></section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="popup-profile">
         <div class="popup__container">
             <button class="popup__close-button" type="button">
             </button>
@@ -91,6 +48,41 @@
             </form>
         </div>
     </div>
+    <div class="popup" id="popup-card">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button">
+            </button>
+            <h2 class="popup__caption">Новое место</h2>
+            <form class="form" method="post" name="form-add-card">
+                <input type="text" name="card-location" class="form__data form__data_input_location" required
+                    placeholder="Название">
+                <input type="text" name="card-link" class="form__data form__data_input_link" required
+                    placeholder="Ссылка на картинку">
+                <button type="submit" class="form__submit">Создать</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup" id="popup-increase-image">
+        <div class="popup__increase-image">
+            <button class="popup__close-button" type="button">
+            </button>
+            <figure class="popup__figure">
+                <img src alt class="popup__image">
+                <figcaption class="popup__title"></figcaption>
+            </figure>
+        </div>
+    </div>
+    <template id="element">
+        <div class="element">
+            <button class="element__trash" type="button" aria-label="Удалить"></button>
+            <img class="element__image" src alt>
+            <div class="element__rectangle">
+                <h2 class="element__title"></h2>
+                <button class="element__like" type="button" aria-label="Лайк"></button>
+            </div>
+        </div>
+    </template>
+    <script src="./scripts/cardData.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 
