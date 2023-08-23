@@ -28,7 +28,7 @@ const previewPopupImage = popupSectionOpenImage.querySelector('.popup__image');
 const previewPopupTitle = popupSectionOpenImage.querySelector('.popup__title');
 
 const cardsContainer = document.querySelector('.elements');
-const template = document.querySelector('#element').content;
+const cardTemplate = document.querySelector('#element').content;
 
 // проходим по массиву и выводим в консоль
 initialCards.forEach(function (cardInfo) {
@@ -41,6 +41,7 @@ function openImage(evt) { //фунция для увеличения карти�
     const imageSrc = imageCard.src;
     const imageTitle = imageCard.alt;
     previewPopupImage.src = imageSrc;
+    previewPopupImage.alt = imageTitle;
     previewPopupTitle.textContent = imageTitle;
     openPopup(popupSectionOpenImage);
 }
@@ -56,7 +57,7 @@ function handleCardDelete(evt) {
 }
 
 function createCard(data) {
-    let card = template.cloneNode(true);
+    const card = cardTemplate.cloneNode(true);
     card.querySelector('.element__image').src = data.link;
     card.querySelector('.element__title').textContent = data.name;
     card.querySelector('.element__image').alt = data.name;
