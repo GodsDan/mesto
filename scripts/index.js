@@ -24,7 +24,6 @@ const jobInput = formElementEditProfile.querySelector('.form__data_input_descrip
 const locationInput = formElementAddCard.querySelector('.form__data_input_location'); // Название для карточки
 const linkInput = formElementAddCard.querySelector('.form__data_input_link'); // Ссылка на картинку
 
-//
 const previewPopupImage = popupSectionOpenImage.querySelector('.popup__image');
 const previewPopupTitle = popupSectionOpenImage.querySelector('.popup__title');
 
