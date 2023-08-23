@@ -1,128 +1,121 @@
 // Создаем переменные
-let profileButtonEdit = document.querySelector('.profile__button-edit');// кнопка изменения данных профиля
-let profileButtonAdd = document.querySelector('.profile__button-add'); // кнопка добавления новой карточки 
+const profileButtonEdit = document.querySelector('.profile__button-edit');// кнопка изменения данных профиля
+const profileButtonAdd = document.querySelector('.profile__button-add'); // кнопка добавления новой карточки 
 
-let popupSectionEditProfile = document.getElementById ('popup-profile');//попап изменения данных профиля
-let popupSectionAddCard = document.getElementById ('popup-card');//попап добавления новой карточки
-let popupSectionOpenImage = document.getElementById ('popup-increase-image'); //попап открытия картинки
+const popupSectionEditProfile = document.querySelector('#popup-profile');//попап изменения данных профиля
+const popupSectionAddCard = document.querySelector('#popup-card');//попап добавления новой карточки
+const popupSectionOpenImage = document.querySelector('#popup-increase-image'); //попап открытия картинки
 
-let popupCloseButtonEdit = popupSectionEditProfile.querySelector('.popup__close-button');//кнопка закрытия попапа редактирования информации профиля
-let popupCloseButtonAdd = popupSectionAddCard.querySelector('.popup__close-button'); //кнопка закрытия попапа добавления новой карточки
-let popupCloseButtonOpenImage = popupSectionOpenImage.querySelector('.popup__close-button'); //кнопка закрытия картинки
+const popupCloseButtonEdit = popupSectionEditProfile.querySelector('.popup__close-button');//кнопка закрытия попапа редактирования информации профиля
+const popupCloseButtonAdd = popupSectionAddCard.querySelector('.popup__close-button'); //кнопка закрытия попапа добавления новой карточки
+const popupCloseButtonOpenImage = popupSectionOpenImage.querySelector('.popup__close-button'); //кнопка закрытия картинки
 
-let profileName = document.querySelector('.profile__name'); // находим поле для вывода имени на странице
-let profileDescription = document.querySelector('.profile__description'); // находим поле "о себе" на странице
+const profileName = document.querySelector('.profile__name'); // находим поле для вывода имени на странице
+const profileDescription = document.querySelector('.profile__description'); // находим поле "о себе" на странице
 
 // Находим форму изменения данных профиля в DOM
-let formElementEditProfile = popupSectionEditProfile.querySelector('.form');
+const formElementEditProfile = popupSectionEditProfile.querySelector('.form');
 // Находим форму добавления новой карточки в DOM
-let formElementAddCard = popupSectionAddCard.querySelector('.form');
+const formElementAddCard = popupSectionAddCard.querySelector('.form');
 
 // Находим поля формы в DOM
-let nameInput = formElementEditProfile.querySelector('.form__data_input_name');// Имя 
-let jobInput = formElementEditProfile.querySelector('.form__data_input_description'); // О себе
-let locationInput = formElementAddCard.querySelector('.form__data_input_location'); // Название для карточки
-let linkInput = formElementAddCard.querySelector('.form__data_input_link'); // Ссылка на картинку
+const nameInput = formElementEditProfile.querySelector('.form__data_input_name');// Имя 
+const jobInput = formElementEditProfile.querySelector('.form__data_input_description'); // О себе
+const locationInput = formElementAddCard.querySelector('.form__data_input_location'); // Название для карточки
+const linkInput = formElementAddCard.querySelector('.form__data_input_link'); // Ссылка на картинку
 
+//
+const previewPopupImage = popupSectionOpenImage.querySelector('.popup__image');
+const previewPopupTitle = popupSectionOpenImage.querySelector('.popup__title');
 
+const cardsContainer = document.querySelector('.elements');
+const template = document.querySelector('#element').content;
 
 // проходим по массиву и выводим в консоль
-  initialCards.forEach(function(elem){
-    let element = document.querySelector('.elements');
-    let elementTemplate = document.querySelector('#element').content;
-    let cardElement = elementTemplate.cloneNode(true);
-    cardElement.querySelector('.element__image').src = elem.link;//ссылка
-    cardElement.querySelector('.element__title').textContent = elem.name;//добавили текст
-    cardElement.querySelector('.element__image').alt = elem.name; //добавили альт 
-    cardElement.querySelector('.element__like').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('element__like_active');
-    });
-    selectElementItem(cardElement);  //удаление карточки
-    cardElement.querySelector('.element__image').addEventListener('click', openImage);
-    element.append(cardElement);  //добавить карточки в конец
+initialCards.forEach(function (cardInfo) {
+    const newCard = createCard(cardInfo);
+    cardsContainer.prepend(newCard);
 });
 
-function openImage (evt) { //фунция для увеличения картинки
-    let imageElement = evt.target;
-    let imageSrc = imageElement.src;
-    let imageTitle = imageElement.alt;
-    let image = popupSectionOpenImage.querySelector('.popup__image');
-    let title = popupSectionOpenImage.querySelector('.popup__title');
-    image.src = imageSrc;
-    title.textContent = imageTitle;
-    popupSectionOpenImage.classList.add('popup_opened');
-    popupSectionOpenImage.classList.add('popup_back');
+function openImage(evt) { //фунция для увеличения картинки
+    const imageCard = evt.target;
+    const imageSrc = imageCard.src;
+    const imageTitle = imageCard.alt;
+    previewPopupImage.src = imageSrc;
+    previewPopupTitle.textContent = imageTitle;
+    openPopup(popupSectionOpenImage);
 }
 
 //Функция удаления карточки
-function selectElementItem (elem) {
-    let buttonDeleteElement = elem.querySelector('.element__trash');//кнопка удаления карточки
-    buttonDeleteElement.addEventListener('click', elementDelete)
+function setCardDeleteEventListener(card) {
+    const buttonDelete = card.querySelector('.element__trash');//кнопка удаления карточки
+    buttonDelete.addEventListener('click', handleCardDelete)
 }
 
-function elementDelete(event){
-    let item = event.target.closest('.element');
-    item.remove();
+function handleCardDelete(evt) {
+    evt.target.closest('.element').remove();
 }
 
-
-// Создаем карточку
-function newCard (){
-    let element = document.querySelector('.elements');
-    let elementTemplate = document.querySelector('#element').content;
-    let addCardElement = elementTemplate.cloneNode(true);
-    addCardElement.querySelector('.element__image').src = linkInput.value;
-    addCardElement.querySelector('.element__title').textContent = locationInput.value;
-    addCardElement.querySelector('.element__image').alt = locationInput.value;
-    addCardElement.querySelector('.element__like').addEventListener('click', function(evt) {
+function createCard(data) {
+    let card = template.cloneNode(true);
+    card.querySelector('.element__image').src = data.link;
+    card.querySelector('.element__title').textContent = data.name;
+    card.querySelector('.element__image').alt = data.name;
+    card.querySelector('.element__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('element__like_active');
     });
-    selectElementItem(addCardElement);  //удаление карточки
-    addCardElement.querySelector('.element__image').addEventListener('click', openImage);
-    element.prepend(addCardElement);
-    
+    setCardDeleteEventListener(card);  //удаление карточки
+    card.querySelector('.element__image').addEventListener('click', openImage);
+    return card;
+}
+
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
 }
 
 // изменение данных профиля
-profileButtonEdit.addEventListener('click',()=>{
+profileButtonEdit.addEventListener('click', () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileDescription.textContent;
-    popupSectionEditProfile.classList.add('popup_opened'); 
+    openPopup(popupSectionEditProfile);
 });
 
 //Закрытие попапа на крестик
-popupCloseButtonEdit.addEventListener('click',()=>{
-    popupSectionEditProfile.classList.remove('popup_opened');
+popupCloseButtonEdit.addEventListener('click', () => {
+    closePopup(popupSectionEditProfile);
 });
 
-function handleFormSubmitEditProfile (evt) {
+function handleFormSubmitEditProfile(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
-    popupSectionEditProfile.classList.remove('popup_opened');
+    closePopup(popupSectionEditProfile);
 }
 formElementEditProfile.addEventListener('submit', handleFormSubmitEditProfile);
 
-
 // Добавление новой карточки
-profileButtonAdd.addEventListener('click',()=>{
-    popupSectionAddCard.classList.add('popup_opened');
+profileButtonAdd.addEventListener('click', () => {
+    openPopup(popupSectionAddCard);
     formElementAddCard.reset();
 });
 
 //Закрытие попапа на крестик
-popupCloseButtonAdd.addEventListener('click',()=>{
-    popupSectionAddCard.classList.remove('popup_opened');
+popupCloseButtonAdd.addEventListener('click', () => {
+    closePopup(popupSectionAddCard);
 });
 
-popupCloseButtonOpenImage.addEventListener('click',()=>{
-    popupSectionOpenImage.classList.remove('popup_opened');
+popupCloseButtonOpenImage.addEventListener('click', () => {
+    closePopup(popupSectionOpenImage);
 });
-// пока что функция открытия на кнопку сохранить
-function handleFormSubmitAddCard (evt) {
+
+function handleFormSubmitAddCard(evt) {
     evt.preventDefault();
-    newCard();
-    popupSectionAddCard.classList.remove('popup_opened');
+    const newCard = createCard({ name: locationInput.value, link: linkInput.value });
+    cardsContainer.prepend(newCard);
+    closePopup(popupSectionAddCard);
 }
 formElementAddCard.addEventListener('submit', handleFormSubmitAddCard);
-

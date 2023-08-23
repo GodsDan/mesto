@@ -10,5 +10,8 @@
     background: rgba(0, 0, 0, .5);
     opacity: 0;
     visibility: hidden;
-    transition: opacity .5s, visibility .4s;
+}
+
+#popup-increase-image.popup {
+    background: rgba(0, 0, 0, 0.9);
 }
