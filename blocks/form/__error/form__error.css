@@ -1,0 +1,14 @@
+.form__error {
+    color: #F00;
+    font-family: "Inter", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: normal;
+    min-height: 30px;
+}
+
+.form__error:last-of-type {
+    margin-bottom: 18px;
+}

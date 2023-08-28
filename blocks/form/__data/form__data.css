@@ -3,9 +3,9 @@
     border: none;
     outline: none;
     padding: 0;
+    margin-bottom: 5px;
     border-bottom: 1px solid #cccccc;
     height: 40px;
-    margin-bottom: 17px;
     box-sizing: border-box;
     color: #000;
     font-family: "Inter", "Helvetica Neue", sans-serif;
@@ -13,8 +13,4 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-
-.form__data:last-of-type {
-    margin-bottom: 48px;
 }

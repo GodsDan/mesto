@@ -5,6 +5,7 @@ const profileButtonAdd = document.querySelector('.profile__button-add'); // кн
 const popupSectionEditProfile = document.querySelector('#popup-profile');//попап изменения данных профиля
 const popupSectionAddCard = document.querySelector('#popup-card');//попап добавления новой карточки
 const popupSectionOpenImage = document.querySelector('#popup-increase-image'); //попап открытия картинки
+const popupsArray = document.querySelectorAll('.popup');
 
 const popupCloseButtonEdit = popupSectionEditProfile.querySelector('.popup__close-button');//кнопка закрытия попапа редактирования информации профиля
 const popupCloseButtonAdd = popupSectionAddCard.querySelector('.popup__close-button'); //кнопка закрытия попапа добавления новой карточки
@@ -82,6 +83,8 @@ profileButtonEdit.addEventListener('click', () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileDescription.textContent;
     openPopup(popupSectionEditProfile);
+    hideInputError(formElementEditProfile, nameInput);
+    hideInputError(formElementEditProfile, jobInput);
 });
 
 //Закрытие попапа на крестик
@@ -91,6 +94,8 @@ popupCloseButtonEdit.addEventListener('click', () => {
 
 function handleFormSubmitEditProfile(evt) {
     evt.preventDefault();
+    evt.submitter.classList.add('form__submit_type_disabled');
+    evt.submitter.disabled = 'disabled';
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
     closePopup(popupSectionEditProfile);
@@ -101,6 +106,8 @@ formElementEditProfile.addEventListener('submit', handleFormSubmitEditProfile);
 profileButtonAdd.addEventListener('click', () => {
     openPopup(popupSectionAddCard);
     formElementAddCard.reset();
+    hideInputError(formElementAddCard, locationInput);
+    hideInputError(formElementAddCard, linkInput);
 });
 
 //Закрытие попапа на крестик
@@ -114,8 +121,33 @@ popupCloseButtonOpenImage.addEventListener('click', () => {
 
 function handleFormSubmitAddCard(evt) {
     evt.preventDefault();
+    evt.submitter.classList.add('form__submit_type_disabled');
+    evt.submitter.disabled = 'disabled';
     const newCard = createCard({ name: locationInput.value, link: linkInput.value });
     cardsContainer.prepend(newCard);
     closePopup(popupSectionAddCard);
+
 }
 formElementAddCard.addEventListener('submit', handleFormSubmitAddCard);
+
+//закрытие на Esc
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+window.addEventListener('keydown', (evt) => {
+    closeByEscape(evt);
+});
+
+//закрытие на оверлей
+function closeByOverlay(evt) {
+    if (evt.target === evt.currentTarget) {
+        closePopup(evt.target);
+    }
+}
+
+popupsArray.forEach((el) => {
+    el.addEventListener('click', closeByOverlay);
+})

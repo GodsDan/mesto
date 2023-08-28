@@ -39,11 +39,13 @@
             <button class="popup__close-button" type="button">
             </button>
             <h2 class="popup__caption">Редактировать профиль</h2>
-            <form class="form" method="post" name="form-edit-profile">
+            <form class="form" method="post" name="form-edit-profile" novalidate>
                 <input type="text" name="avatar-name" class="form__data form__data_input_name" required
-                    placeholder="Имя">
+                    placeholder="Имя" minlength="2" maxlength="40">
+                <span class="form__error" id="avatar-name-error"></span>
                 <input type="text" name="avatar-desription" class="form__data form__data_input_description" required
-                    placeholder="О себе">
+                    placeholder="О себе" minlength="2" maxlength="200">
+                <span class="form__error" id="avatar-desription-error"></span>
                 <button type="submit" class="form__submit">Сохранить</button>
             </form>
         </div>
@@ -53,12 +55,14 @@
             <button class="popup__close-button" type="button">
             </button>
             <h2 class="popup__caption">Новое место</h2>
-            <form class="form" method="post" name="form-add-card">
+            <form class="form" method="post" name="form-add-card" novalidate>
                 <input type="text" name="card-location" class="form__data form__data_input_location" required
-                    placeholder="Название">
-                <input type="text" name="card-link" class="form__data form__data_input_link" required
+                    placeholder="Название" minlength="2" maxlength="30">
+                <span class="form__error" id="card-location-error"></span>
+                <input type="url" name="card-link" class="form__data form__data_input_link" required
                     placeholder="Ссылка на картинку">
-                <button type="submit" class="form__submit">Создать</button>
+                <span class="form__error" id="card-link-error"></span>
+                <button type="submit" class="form__submit" disabled>Создать</button>
             </form>
         </div>
     </div>
@@ -83,7 +87,7 @@
         </div>
     </template>
     <script src="./scripts/initialCards.js"></script>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
-</body>
 
 </html>

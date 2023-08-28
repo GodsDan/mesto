@@ -20,9 +20,12 @@
 
  <img src="./images/Screen-popup-add.png">
 
- *Также картинку можно увеличить/поставить лайк/удалить*
+ *Картинку можно увеличить/поставить лайк/удалить*
 
  <img src="./images/Screen-popup-add.png">
+ 
+ *Добавлена валидация формы*
+ <img src="./images/Screen-valid.png">
 
 ## План по доработке
 
