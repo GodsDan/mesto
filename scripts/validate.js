@@ -1,20 +1,20 @@
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, validForm) => {
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-    inputElement.classList.add('form__data_type_error');
+    inputElement.classList.add(validForm.inputErrorClass);
     errorElement.textContent = errorMessage;
 };
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement,validForm) => {
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-    inputElement.classList.remove('form__data_type_error');
+    inputElement.classList.remove(validForm.inputErrorClass);
     errorElement.textContent = '';
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement,validForm) => {
     if (!inputElement.validity.valid) {
-        showInputError(formElement, inputElement, inputElement.validationMessage);
+        showInputError(formElement, inputElement, inputElement.validationMessage, validForm);
     } else {
-        hideInputError(formElement, inputElement);
+        hideInputError(formElement, inputElement, validForm);
     }
 };
 
@@ -24,7 +24,7 @@ const setEventListeners = (formElement, validForm) => {
     toggleButtonState(inputList, buttonElement, validForm.inactiveButtonClass);
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
-            checkInputValidity(formElement, inputElement);
+            checkInputValidity(formElement, inputElement,validForm);
             toggleButtonState(inputList, buttonElement, validForm.inactiveButtonClass);
         });
     });
@@ -49,13 +49,22 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(inactiveButtonClass);
-        buttonElement.disabled = true;
+        disabledButton(buttonElement, inactiveButtonClass);
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.disabled = false;
+        enabledButton(buttonElement, inactiveButtonClass);
     }
 }
+
+function disabledButton (buttonElement, inactiveButtonClass){
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = 'disabled'; 
+}
+
+function enabledButton (buttonElement, inactiveButtonClass){
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = '';
+}
+
 
 const validForm = {
     formSelector: '.form',

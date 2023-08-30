@@ -72,10 +72,16 @@ function createCard(data) {
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    window.addEventListener('keydown', (evt) => {
+        closeByEscape(evt);
+    });
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    window.removeEventListener('keydown', (evt) => {
+        closeByEscape(evt);
+    });
 }
 
 // изменение данных профиля
@@ -83,8 +89,8 @@ profileButtonEdit.addEventListener('click', () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileDescription.textContent;
     openPopup(popupSectionEditProfile);
-    hideInputError(formElementEditProfile, nameInput);
-    hideInputError(formElementEditProfile, jobInput);
+    hideInputError(formElementEditProfile, nameInput, validForm);
+    hideInputError(formElementEditProfile, jobInput, validForm);
 });
 
 //Закрытие попапа на крестик
@@ -92,22 +98,21 @@ popupCloseButtonEdit.addEventListener('click', () => {
     closePopup(popupSectionEditProfile);
 });
 
-function handleFormSubmitEditProfile(evt) {
+function handleFormSubmitEditProfile(evt, inactiveButtonClass) {
     evt.preventDefault();
-    evt.submitter.classList.add('form__submit_type_disabled');
-    evt.submitter.disabled = 'disabled';
+    disabledButton(evt.submitter, inactiveButtonClass);
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
     closePopup(popupSectionEditProfile);
 }
-formElementEditProfile.addEventListener('submit', handleFormSubmitEditProfile);
+formElementEditProfile.addEventListener('submit', (evt)=>{handleFormSubmitEditProfile(evt, validForm.inactiveButtonClass)});
 
 // Добавление новой карточки
 profileButtonAdd.addEventListener('click', () => {
     openPopup(popupSectionAddCard);
     formElementAddCard.reset();
-    hideInputError(formElementAddCard, locationInput);
-    hideInputError(formElementAddCard, linkInput);
+    hideInputError(formElementAddCard, locationInput, validForm);
+    hideInputError(formElementAddCard, linkInput, validForm);
 });
 
 //Закрытие попапа на крестик
@@ -119,16 +124,15 @@ popupCloseButtonOpenImage.addEventListener('click', () => {
     closePopup(popupSectionOpenImage);
 });
 
-function handleFormSubmitAddCard(evt) {
+function handleFormSubmitAddCard(evt, inactiveButtonClass) {
     evt.preventDefault();
-    evt.submitter.classList.add('form__submit_type_disabled');
-    evt.submitter.disabled = 'disabled';
+    disabledButton(evt.submitter, inactiveButtonClass);
     const newCard = createCard({ name: locationInput.value, link: linkInput.value });
     cardsContainer.prepend(newCard);
     closePopup(popupSectionAddCard);
 
 }
-formElementAddCard.addEventListener('submit', handleFormSubmitAddCard);
+formElementAddCard.addEventListener('submit', (evt)=>{handleFormSubmitAddCard(evt, validForm.inactiveButtonClass)});
 
 //закрытие на Esc
 function closeByEscape(evt) {
@@ -137,9 +141,6 @@ function closeByEscape(evt) {
         closePopup(openedPopup);
     }
 }
-window.addEventListener('keydown', (evt) => {
-    closeByEscape(evt);
-});
 
 //закрытие на оверлей
 function closeByOverlay(evt) {
