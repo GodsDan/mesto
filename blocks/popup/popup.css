@@ -9,7 +9,7 @@
     align-items: center;
     background: rgba(0, 0, 0, .5);
     opacity: 0;
-    visibility: hidden; 
+    visibility: hidden;
     transition: opacity .5s, visibility .4s;
 }
 
