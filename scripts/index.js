@@ -39,11 +39,9 @@ initialCards.forEach(function (cardInfo) {
 
 function openImage(evt) { //фунция для увеличения картинки
     const imageCard = evt.target;
-    const imageSrc = imageCard.src;
-    const imageTitle = imageCard.alt;
-    previewPopupImage.src = imageSrc;
-    previewPopupImage.alt = imageTitle;
-    previewPopupTitle.textContent = imageTitle;
+    previewPopupImage.src = imageCard.src;
+    previewPopupImage.alt = imageCard.alt;
+    previewPopupTitle.textContent = imageCard.alt;
     openPopup(popupSectionOpenImage);
 }
 
@@ -72,16 +70,12 @@ function createCard(data) {
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    window.addEventListener('keydown', (evt) => {
-        closeByEscape(evt);
-    });
+    window.addEventListener('keydown', closeByEscape);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    window.removeEventListener('keydown', (evt) => {
-        closeByEscape(evt);
-    });
+    window.removeEventListener('keydown', closeByEscape);
 }
 
 // изменение данных профиля
@@ -150,5 +144,5 @@ function closeByOverlay(evt) {
 }
 
 popupsArray.forEach((el) => {
-    el.addEventListener('click', closeByOverlay);
+    el.addEventListener('mousedown', closeByOverlay);
 })
