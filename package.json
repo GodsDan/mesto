@@ -1,0 +1,11 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "<p> По состоянию на 25 июня 2023 года в России насчитывается 1119 городов. Масштабно, неправда ли? </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Romanova Bogdana",
+  "license": "ISC"
+}
